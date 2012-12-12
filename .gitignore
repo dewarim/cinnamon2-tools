@@ -7,7 +7,7 @@ target/**
 .svn*
 .svn
 .classpath
-*.iml
+#*.iml
 temp/**
 version.properties
 lib/**
