@@ -1,0 +1,24 @@
+<configuration scan="true" scanPeriod="30 seconds">
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <layout class="ch.qos.logback.classic.PatternLayout">
+      <Pattern>%d{HH:mm:ss} %-5level %logger{36} %L - %msg%n</Pattern>
+    </layout>
+  </appender>
+
+  <root level="DEBUG">
+    <appender-ref ref="STDOUT" />
+  </root>
+
+    <logger name="net.sourceforge.cinnamon.tool.converter.ContentRelationConverter" level="DEBUG"/>
+    <logger name="net.sourceforge.cinnamon.tool.repository.OrphanFinder" level="DEBUG"/>
+  <logger name="httpclient.wire.header" level="INFO"/>
+  <logger name="httpclient.wire.content" level="INFO"/>
+  <logger name="safran.test.ClientTest" level="INFO"/>
+  <logger name="org.hibernate.ejb.AbstractJarVisitor" level="INFO"/>
+  <logger name="safran.Client" level="INFO"/>
+  <logger name="org.hibernate" level="ERROR"/>
+  <logger name="org.hibernate.cfg.SettingsFactory" level="ERROR"/>
+
+
+</configuration>

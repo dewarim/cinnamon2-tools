@@ -1,0 +1,386 @@
+<!--
+	
+-->
+
+<project name="CinnamonTools">
+    <description>
+        Build file for the Cinnamon Tools
+    </description>
+
+    <!-- properties -->
+    <property environment="env"/>
+    <property name="workspace.home" value="${env.CINNAMON2_SOURCE}"/>
+    <property name="lib.home" value="${env.JAVA_LIB_HOME}"/>    
+    <property name="lib.groovy" value="${env.GRAILS_HOME}/lib/org.codehaus.groovy/groovy-all/jars/groovy-all-1.8.8.jar"/>
+    
+    <property name="tools.home" value="${workspace.home}/Tools"/>
+    <property name="tools.src" value="${tools.home}/src"/>
+    <property name="tools.build" value="${tools.home}/build"/>
+    <property name="tools.build.classes" value="${tools.build}/classes"/>
+    <property name="docs.home" value="${tools.home}/docs"/>
+    <property name="tools.target" value="${tools.home}/target"/>
+    <property name="tools.jar" value="${tools.target}/cinnamonTools.jar"/>
+    <property name="converter.jar" value="${tools.target}/contentRelationConverter.jar"/>
+
+    <property name="lib.safran" value="${tools.home}/lib/safran.jar"/>
+
+    <property name="lib.home" value="${user.home}/java_libs2"/>
+
+    <property name="lib.testng.home" value="${lib.home}/testng-6.3.1"/>
+    <property name="lib.testng" value="${lib.testng.home}/testng-6.3.1.jar"/>
+
+    <property name="lib.slf4j" value="${lib.home}/slf4j-1.6.4"/>
+    <property name="lib.slf4j.api" value="${lib.slf4j}/slf4j-api-1.6.4.jar"/>
+    <property name="lib.logback" value="${lib.home}/logback-1.0.0"/>
+    <property name="lib.logback.core" value="${lib.logback}/logback-core-1.0.0.jar"/>
+    <property name="lib.logback.classic" value="${lib.logback}/logback-classic-1.0.0.jar"/>
+    <property name="lib.dom4j.home" value="${lib.home}/dom4j-1.6.1"/>
+    <property name="lib.dom4j" value="${lib.dom4j.home}/dom4j-1.6.1.jar"/>
+    <property name="lib.xpp3" value="${lib.dom4j.home}/lib/xpp3-1.1.3.3.jar"/>
+    <property name="lib.jaxen" value="${lib.dom4j.home}/lib/jaxen-1.1-beta-6.jar"/>
+    <property name="lib.ant.home" value="${lib.home}/apache-ant-1.8.2/lib" />
+    <property name="lib.ant" value="${lib.ant.home}/ant.jar"/>
+    <property name="lib.ant.launcher" value="${lib.ant.home}/ant-launcher.jar"/>
+    <property name="lib.ant.jsch" value="${lib.ant.home}/ant-jsch.jar"/>
+    <property name="lib.jsch.home" value="${lib.home}/jsch-0.1.44" />
+    <property name="lib.jsch" value="${lib.jsch.home}/jsch-0.1.44.jar"/>
+  
+    <property name="server.home" value="${workspace.home}/Server"/>
+    <property name="server.home.lib" value="${server.home}/lib"/>
+
+    <property name="lib.entitylib" value="${server.home.lib}/entitylib.jar"/>
+    <property name="lib.cinnamonBase" value="${server.home.lib}/cinnamonBase.jar"/>
+    <property name="lib.utils" value="${server.home.lib}/utils.jar"/>
+
+    <property name="lib.tika" value="${server.home}/lib/tika-bundle-1.0-SNAPSHOT.jar"/>
+    <property name="lib.slf4j" value="${lib.home}/slf4j-1.6.4"/>
+    <property name="lib.slf4j.api" value="${lib.slf4j}/slf4j-api-1.6.4.jar"/>
+    <property name="lib.logback" value="${lib.home}/logback-1.0.0"/>
+    <property name="lib.logback.core" value="${lib.logback}/logback-core-1.0.0.jar"/>
+    <property name="lib.logback.classic" value="${lib.logback}/logback-classic-1.0.0.jar"/>
+    <property name="lib.dom4j.home" value="${lib.home}/dom4j-1.6.1"/>
+    <property name="lib.dom4j" value="${lib.dom4j.home}/dom4j-1.6.1.jar"/>
+    <property name="lib.jaxen" value="${lib.home}/jaxen-1.1.3/jaxen-1.1.3.jar"/>
+    <property name="lib.c3p0" value="${lib.home}/c3p0-0.9.1.2/lib/c3p0-0.9.1.2.jar"/>
+    <property name="lib.postgres" value="${lib.home}/postgresql-9.1-901.jdbc4.jar"/>
+    <property name="lib.xmlunit" value="${lib.home}/xmlunit-1.3/lib/xmlunit-1.3.jar"/>
+    <property name="lib.lucene.home" value="${lib.home}/lucene-3.5.0"/>
+    <property name="lib.lucene" value="${lib.lucene.home}/lucene-core-3.5.0.jar"/>
+    <property name="lib.lucene.xmlquery"
+              value="${lib.lucene.home}/contrib/xml-query-parser/lucene-xml-query-parser-3.5.0.jar"/>
+    <property name="lib.lucene.regex" value="${lib.lucene.home}/contrib/queries/lucene-queries-3.5.0.jar"/>
+    <property name="lib.xhtmlrenderer.home" value="${lib.home}/flyingsaucer-R8"/>
+    <property name="lib.xhtmlrenderer.name" value="core-renderer.jar"/>
+    <property name="lib.xhtmlrenderer" value="${lib.xhtmlrenderer.home}/${lib.xhtmlrenderer.name}"/>
+    <property name="lib.xhtmlrenderer.itext.name" value="iText-2.0.8.jar"/>
+    <property name="lib.xhtmlrenderer.itext" value="${lib.xhtmlrenderer.home}/${lib.xhtmlrenderer.itext.name}"/>
+    <property name="lib.itext" value="${lib.xhtmlrenderer.itext}"/>
+    <property name="lib.jtds.home" value="${lib.home}/jtds-1.2.5"/>
+    <property name="lib.jtds" value="${lib.jtds.home}/jtds-1.2.5.jar"/>
+    <property name="lib.mysql" value="${lib.home}/mysql-connector-java-5.1.11/mysql-connector-java-5.1.11-bin.jar"/>
+    <property name="lib.javamail" value="${lib.home}/javamail-1.4.3/mail.jar"/>
+    <property name="lib.velocity" value="${lib.home}/velocity-1.7/velocity-1.7.jar"/>
+    <property name="lib.velocity.dep" value="${lib.home}/velocity-1.7/velocity-1.7-dep.jar"/>
+
+    <property name="lib.commons.collections"
+              value="${lib.home}/commons-collections-3.2.1/commons-collections-3.2.1.jar"/>
+    <property name="lib.commons.httpclient.home" value="${lib.home}/commons-httpclient-3.1"/>
+    <property name="lib.commons.httpclient" value="${lib.commons.httpclient.home}/commons-httpclient-3.1.jar"/>
+    <property name="lib.commons.fileupload.path" value="${lib.home}/commons-fileupload-1.2.1/lib"/>
+    <property name="lib.commons.fileupload.name" value="commons-fileupload-1.2.1.jar"/>
+    <property name="lib.commons.fileupload" value="${lib.commons.fileupload.path}/${lib.commons.fileupload.name}"/>
+    <property name="lib.commons.logging.home" value="${lib.home}/commons-logging-1.1.1"/>
+    <property name="lib.commons.logging" value="${lib.commons.logging.home}/commons-logging-1.1.1.jar"/>
+    <property name="lib.commons.logging.api" value="${lib.commons.logging.home}/commons-logging-api-1.1.1.jar"/>
+    <property name="lib.commons.io.home" value="${lib.home}/commons-io-2.1"/>
+    <property name="lib.commons.io" value="${lib.commons.io.home}/commons-io-2.1.jar"/>
+    <property name="lib.commons.codec" value="${lib.home}/commons-codec-1.5/commons-codec-1.5.jar"/>
+    <property name="lib.commons.cli" value="${env.GRAILS_HOME}/lib/commons-cli/commons-cli/jars/commons-cli-1.2.jar"/>
+    <property name="lib.home" value="/home/ingo/java_libs"/>
+    <property name="hibernate.home" value="${lib.home}/hibernate-distribution-3.6.8.Final"/>
+    <property name="hibernate.lib" value="${hibernate.home}/lib"/>
+    <property name="hibernate.lib.required" value="${hibernate.lib}/required"/>
+    <property name="hibernate.lib.optional" value="${hibernate.lib}/optional"/>
+    <property name="lib.hibernate.jpa" value="${lib.home}/hibernate-distribution-3.6.8.Final/lib/jpa/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+    <property name="catalina.home" value="/var/lib/tomcat6"/>
+    <property name="lib.servlet_api" value="${lib.home}/servlet-api-2.5.jar"/>
+
+
+    <property name="compile.debug" value="true"/>
+    <path id="compile.classpath">
+        <!-- <pathelement location="${lib.commons.cli}"/> -->
+        <pathelement location="${lib.testng}"/>
+        <pathelement location="${lib.groovy}"/>
+        <pathelement location="${lib.slf4j.api}"/>
+        <fileset dir="${lib.logback}" includes="logback-c*.jar" excludes="*sources.jar"/>
+        <pathelement location="${lib.dom4j}"/>
+        <pathelement location="${lib.safran}"/>
+        <pathelement location="${lib.entitylib}"/>
+        <pathelement location="${lib.cinnamonBase}"/>
+        <pathelement location="${lib.utils}"/>
+        <pathelement location="${lib.testng}"/>
+        <pathelement location="${hibernate.home}/hibernate3.jar"/>
+        <fileset dir="${hibernate.lib.required}" includes="*.jar" excludes="dom4j* slf4j*"/>
+        <pathelement location="${lib.hibernate.jpa}"/>
+        <pathelement location="${lib.servlet_api}"/>
+        <pathelement location="${lib.commons.httpclient}"/>
+        <pathelement location="${lib.xmlunit}"/>
+        <pathelement location="${lib.lucene}"/>
+        <pathelement location="${lib.lucene.xmlquery}"/>
+        <pathelement location="${lib.lucene.regex}"/>
+        <pathelement location="${lib.commons.io}"/>
+        <pathelement location="${lib.xhtmlrenderer}"/>
+        <pathelement location="${lib.xhtmlrenderer.itext}"/>
+        <pathelement location="${lib.javamail}"/>
+        <pathelement location="${lib.velocity}"/>
+        <pathelement location="${lib.tika}"/>
+        <pathelement location="${tools.home}/lib/cinnamon_full.jar"/>
+    </path>
+
+
+    <!-- =================================
+    target: all
+   ================================= -->
+    <target name="all" depends="compile" description="Clean build and dist directories, then compile"/>
+
+    <!-- =================================
+    target: clean
+   ================================= -->
+    <target name="clean" description="Delete old build and dist directories">
+        <delete dir="${tools.build}"/>
+        <delete dir="${tools.target}"/>
+    </target>
+
+
+    <target name="prepare.rs" depends="clean" description="prepare for compilation of the rs lib">
+
+        <mkdir dir="${tools.build}"/>
+        <mkdir dir="${tools.target}"/>
+        <mkdir dir="${tools.build.classes}"/>
+        <mkdir dir="${tools.build}/lib"/>
+
+
+        <copy todir="${tools.build}/lib" file="${lib.cinnamonBase}"/>
+        <copy todir="${tools.build}/lib" file="${lib.entitylib}"/>
+        <copy todir="${tools.build}/lib" file="${lib.utils}"/>
+        <!--<copy todir="${tools.build}/lib" file="${hibernate.annotations.lib}/ejb3-persistence.jar"/>-->
+        <copy todir="${tools.build}/lib" file="${lib.groovy}"/>
+        <copy todir="${tools.build}/lib" file="${lib.slf4j.api}"/>
+        <copy todir="${tools.build}/lib" file="${lib.logback.core}"/>
+        <copy todir="${tools.build}/lib" file="${lib.logback.classic}"/>
+        <copy todir="${tools.build}/lib" file="${lib.jsch}"/>
+        <copy todir="${tools.build}/lib" file="${lib.ant}"/>
+        <copy todir="${tools.build}/lib" file="${lib.ant.jsch}"/>
+        <copy todir="${tools.build}/lib" file="${lib.ant.launcher}"/>
+
+        <copy todir="${tools.build}/lib" file="${lib.commons.fileupload}"/>
+        <copy todir="${tools.build}/lib" file="${lib.commons.io}"/>
+        <copy todir="${tools.build}/lib" file="${lib.commons.httpclient}"/>
+        <copy todir="${tools.build}/lib" file="${lib.commons.collections}"/>
+        <copy todir="${tools.build}/lib" file="${lib.commons.codec}"/>
+        <copy todir="${tools.build}/lib" file="${lib.commons.logging}"/>
+        <!-- needed by httpclient -->
+        <copy todir="${tools.build}/lib" file="${lib.jaxen}"/>
+        <!-- needed by dom4j -->
+        <copy todir="${tools.build}/lib" file="${lib.dom4j}"/>
+        <copy todir="${tools.build}/lib" file="${lib.jtds}"/>
+        <copy todir="${tools.build}/lib" file="${lib.postgres}"/>
+        <copy todir="${tools.build}/lib" file="${lib.lucene}"/>
+        <copy todir="${tools.build}/lib" file="${lib.lucene.xmlquery}"/>
+        <copy todir="${tools.build}/lib" file="${lib.lucene.regex}"/>
+
+        <copy todir="${tools.build}/lib" file="${hibernate.home}/hibernate3.jar"/>
+        <copy todir="${tools.build}/lib" file="${lib.hibernate.jpa}"/>
+        <copy todir="${tools.build}/lib" file="${tools.home}/lib/cinnamon_full.jar"/>
+        <copy todir="${tools.build}/lib" file="${lib.c3p0}"/>
+        <copy todir="${tools.build}/lib">
+            <fileset dir="${hibernate.lib.required}"
+                     includes="*.jar"
+                     excludes="commons-collections*.jar slf4j* dom4j*"
+                    />
+        </copy>
+    </target>
+
+
+    <taskdef name="groovyc"
+             classname="org.codehaus.groovy.ant.Groovyc"
+             classpathref="compile.classpath"/>
+
+
+    <!-- - - - - - - - - - - - - - - - - -
+target: compile.rs
+- - - - - - - - - - - - - - - - - -->
+    <target name="compile" depends="prepare.rs" description="compile the tools and build a .jar">
+        <groovyc srcdir="${tools.src}"
+                 destdir="${tools.build.classes}">
+            <classpath>
+                <path refid="compile.classpath"/>
+            </classpath>
+            <javac classpathref="compile.classpath"/>
+        </groovyc>
+
+        <mkdir dir="${tools.build.classes}/META-INF"/>
+
+    </target>
+
+    <target name="makeJar" depends="compile" description="create a jar for distribution">
+        <jar destfile="${tools.jar}" basedir="${tools.build.classes}">
+            <zipgroupfileset dir="${tools.build}/lib/">
+                <include name="**/*.jar"/>
+                <exclude name="**/slf4j-api.jar"/>
+            </zipgroupfileset>
+            <include name="**/*.class"/>
+            <include name="**/META-INF/*.xml"/>
+            <include name="**/testng.xml"/>
+            <include name="**/*.properties"/>
+
+            <manifest>
+                <attribute name="Main-Class" value="net.sourceforge.cinnamon.tool.transfer.CopyRepository"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="makeFullConverterJar" depends="compile" description="create a jar for distribution">
+        <copy todir="${tools.target}" file="config/converter/config.properties"/>
+        <jar destfile="${converter.jar}" basedir="${tools.build.classes}">
+            <zipgroupfileset dir="${tools.build}/lib/">
+                <include name="**/*.jar"/>
+                  <exclude name="**/slf4j-api.jar"/>
+            </zipgroupfileset>
+            <include name="**/*.class"/>
+            <include name="**/META-INF/*.xml"/>
+            <include name="**/testng.xml"/>
+            <include name="**/*.properties"/>
+
+            <manifest>
+                <attribute name="Main-Class" value="net.sourceforge.cinnamon.tool.converter.ContentRelationConverter"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="makeContentSizeFixerJar" depends="compile" description="create a jar for distribution">
+        <copy todir="${tools.target}" file="config/converter/config.properties"/>
+        <jar destfile="${tools.target}/contentSizeFixer.jar" basedir="${tools.build.classes}">
+            <zipgroupfileset dir="${tools.build}/lib/">
+                <include name="**/*.jar"/>
+                  <exclude name="**/slf4j-api.jar"/>
+            </zipgroupfileset>
+            <include name="**/*.class"/>
+            <include name="**/META-INF/*.xml"/>
+            <include name="**/testng.xml"/>
+            <include name="**/*.properties"/>
+
+            <manifest>
+                <attribute name="Main-Class" value="net.sourceforge.cinnamon.tool.converter.ContentSizeFixer"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="makeOrphanFinderJar" depends="compile" description="create a jar for distribution">
+        <copy todir="${tools.target}" file="config/converter/config.properties"/>
+        <jar destfile="${tools.target}/orphanFinder.jar" basedir="${tools.build.classes}">
+            <zipgroupfileset dir="${tools.build}/lib/">
+                <include name="**/*.jar"/>
+                  <exclude name="**/slf4j-api.jar"/>
+            </zipgroupfileset>
+            <include name="**/*.class"/>
+            <include name="**/META-INF/*.xml"/>
+            <include name="**/testng.xml"/>
+            <include name="**/*.properties"/>
+
+            <manifest>
+                <attribute name="Main-Class" value="net.sourceforge.cinnamon.tool.repository.OrphanFinder"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="makeRepositoryCleanerJar" depends="compile" description="create a jar for distribution">
+        <copy todir="${tools.target}" file="config/converter/config.properties"/>
+        <jar destfile="${tools.target}/repositoryCleaner.jar" basedir="${tools.build.classes}">
+            <zipgroupfileset dir="${tools.build}/lib/">
+                <include name="**/*.jar"/>
+                  <exclude name="**/slf4j-api.jar"/>
+            </zipgroupfileset>
+            <include name="**/*.class"/>
+            <include name="**/META-INF/*.xml"/>
+            <include name="**/testng.xml"/>
+            <include name="**/*.properties"/>
+
+            <manifest>
+                <attribute name="Main-Class" value="net.sourceforge.cinnamon.tool.repository.RepositoryCleaner"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="makeBomWriterJar" depends="compile" description="create a jar for distribution">
+        <copy todir="${tools.target}" file="config/converter/config.properties"/>
+        <jar destfile="${tools.target}/bomWriter.jar" basedir="${tools.build.classes}">
+            <zipgroupfileset dir="${tools.build}/lib/">
+                <include name="**/*.jar"/>
+                  <exclude name="**/slf4j-api.jar"/>
+            </zipgroupfileset>
+            <include name="**/*.class"/>
+            <include name="**/META-INF/*.xml"/>
+            <include name="**/testng.xml"/>
+            <include name="**/*.properties"/>
+
+            <manifest>
+                <attribute name="Main-Class" value="net.sourceforge.cinnamon.tool.converter.BOMWriter"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="makeBomFixerJar" depends="compile" description="create a jar for distribution">
+        <copy todir="${tools.target}" file="config/converter/config.properties"/>
+        <jar destfile="${tools.target}/bomFixer.jar" basedir="${tools.build.classes}">
+            <zipgroupfileset dir="${tools.build}/lib/">
+                <include name="**/*.jar"/>
+                  <exclude name="**/slf4j-api.jar"/>
+            </zipgroupfileset>
+            <include name="**/*.class"/>
+            <include name="**/META-INF/*.xml"/>
+            <include name="**/testng.xml"/>
+            <include name="**/*.properties"/>
+
+            <manifest>
+                <attribute name="Main-Class" value="net.sourceforge.cinnamon.tool.converter.BOMWriterAndEncodingFixer"/>
+            </manifest>
+        </jar>
+    </target>
+    <target name="metaConverterJar" depends="compile" description="create a jar for distribution">
+        <copy todir="${tools.target}" file="config/converter/config.properties"/>
+        <jar destfile="${tools.target}/metaConverter.jar" basedir="${tools.build.classes}">
+            <zipgroupfileset dir="${tools.build}/lib/">
+                <include name="**/*.jar"/>
+                  <exclude name="**/slf4j-api.jar"/>
+            </zipgroupfileset>
+            <include name="**/*.class"/>
+            <include name="**/META-INF/*.xml"/>
+            <include name="**/testng.xml"/>
+            <include name="**/*.properties"/>
+
+            <manifest>
+                <attribute name="Main-Class" value="net.sourceforge.cinnamon.tool.converter.MetaConverter"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="makeTikaUpdater" depends="compile" description="create a jar for distribution">
+        <copy todir="${tools.target}" file="config/converter/config.properties"/>
+        <jar destfile="${tools.target}/tikaUpdater.jar" basedir="${tools.build.classes}">
+            <zipgroupfileset dir="${tools.build}/lib/">
+                <include name="**/*.jar"/>
+                  <exclude name="**/slf4j-api.jar"/>
+            </zipgroupfileset>
+            <include name="**/*.class"/>
+            <include name="**/META-INF/*.xml"/>
+            <include name="**/testng.xml"/>
+            <include name="**/*.properties"/>
+
+            <manifest>
+                <attribute name="Main-Class" value="net.sourceforge.cinnamon.tool.converter.TikaUpdater"/>
+            </manifest>
+        </jar>
+    </target>
+
+</project>

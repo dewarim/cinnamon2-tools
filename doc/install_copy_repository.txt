@@ -1,0 +1,40 @@
+How to install CopyRepository
+
+1. customize config/copyRepository.xml
+
+2. customize known_hosts.dat - this file should contain the public keys of
+    the virtual machines you are trying to connect to.
+
+    One way to get those is by connecting by SSH from one VM to the other and
+    accepting the other's key. Then you will find it as the last line in
+    /home/cinnamon/.ssh/known_hosts
+    If your VM encrypts this key as:
+        |1|43JWay+e3dYDoe/ECmc10+U1HkA=|7gxtxQ+VtB0Q+I6BO2OX8Y8aFGE= ssh-rsa AAAAB3NzaC1yc2EAA...==
+    you should copy this line and replace the part from the start of the line to the first space
+    with the ip number of the VM:
+        172.16.13.143 ssh-rsa AAAAB3NzaC1yc2EAA...==
+
+3. copy root.authorized_keys to both VMs as /root/.ssh/authorized_keys
+  (this can be done via:)
+  > sudo bash
+  > mkdir /root/.ssh
+  > cp /tmp/root.authorized_keys /root/.ssh/authorized_keys
+  > chmod +Rv 0600 /root/.ssh
+
+4. copy cinnamon.authorized_keys to both VMs as /home/cinnamon/.ssh/authorized_keys
+  if the file already exists, append the content of cinnamon.authorized_keys:
+  cat /tmp/cinnamon.authorized_keys >> /home/cinnamon/.ssh/authorized_keys
+
+How to run it:
+java -jar cinnmamonTools.jar $configFile
+
+IMPORTANT:
+1. If you set <copyConfigFiles> to true, you must edit cinnamon_config.xml on the target
+system so it contains the correct number or repositories. For example, if you copy
+the repository "demo", and your source VM contains also a configured repository "cmn_test",
+the cinnamon_config.xml will contain references to the cmn_test repository on the target
+system, too.
+2. This keys in authorized_keys allow anybody who has the private keys in config/*.key to
+connect to the VMs as root. So you must not use this tool on VMs which are connected
+directly to the internet. If you want to secure a VM after copying the repository, please
+remove the authorized_keys file from both /home/cinnamon/.ssh and /root/.ssh.

@@ -1,0 +1,10 @@
+cinnamonTools depends on the following libraries:
+
+Groovy 1.7.8 (or higher) - http://groovy.codehaus.org/
+SLF4J 1.5.11 - http://slf4j.org/
+Logback-core 0.9.18 - http://logback.qos.ch/
+Logback-classic 0.9.18
+jsch 0.1.44 - http://www.jcraft.com/jsch/
+dom4j-1.6.1 - http://dom4j.sourceforge.net/
+Safran (Cinnamon Client library) - current version.
+Apache Ant 1.7.1 or newer - http://ant.apache.org/

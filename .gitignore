@@ -1,0 +1,19 @@
+*.idea/**
+*.svn*
+*.settings*
+*.class
+target/**
+*~
+.svn*
+.svn
+.classpath
+*.iml
+temp/**
+version.properties
+lib/**
+build/**
+bin/**
+
+# TODO: make config public. At the moment, it contains custom config.properties and SSH-keys. 
+config/**
+
