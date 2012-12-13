@@ -37,15 +37,6 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/grails/lib/org.codehaus.groovy/groovy-all/jars/groovy-all-1.8.6.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
           <root url="jar://$USER_HOME$/java_libs/jtds-1.2.5/jtds-1.2.5.jar!/" />
         </CLASSES>
         <JAVADOC />
