@@ -42,7 +42,7 @@
         <pathelement location="${lib.testng}"/>
         <pathelement location="${hibernate.home}/hibernate3.jar"/>
         <fileset dir="${hibernate.lib.required}" includes="*.jar" excludes="dom4j* slf4j*"/>
-        <pathelement location="${lib.hibernate.jpa}"/>
+        <pathelement location="${hibernate.lib.jpa}"/>
         <pathelement location="${lib.servlet_api}"/>
         <pathelement location="${lib.commons.httpclient}"/>
         <pathelement location="${lib.xmlunit}"/>
@@ -111,7 +111,7 @@
         <copy todir="${tools.build}/lib" file="${lib.lucene.regex}"/>
 
         <copy todir="${tools.build}/lib" file="${hibernate.home}/hibernate3.jar"/>
-        <copy todir="${tools.build}/lib" file="${lib.hibernate.jpa}"/>
+        <copy todir="${tools.build}/lib" file="${hibernate.lib.jpa}"/>
         <copy todir="${tools.build}/lib" file="${tools.home}/lib/cinnamon_full.jar"/>
         <copy todir="${tools.build}/lib" file="${lib.c3p0}"/>
         <copy todir="${tools.build}/lib">
