@@ -17,7 +17,7 @@
     -->
     <property file="../cinnamon2-server/cinnamon.build.properties"/>
     
-    <property name="tools.home" value="${workspace.home}/Tools"/>
+    <property name="tools.home" value="${workspace.home}/cinnamon2-tools"/>
     <property name="tools.src" value="${tools.home}/src"/>
     <property name="tools.build" value="${tools.home}/build"/>
     <property name="tools.build.classes" value="${tools.build}/classes"/>
@@ -198,7 +198,6 @@ target: compile.rs
     </target>
 
     <target name="makeOrphanFinderJar" depends="compile" description="create a jar for distribution">
-        <copy todir="${tools.target}" file="config/converter/config.properties"/>
         <jar destfile="${tools.target}/orphanFinder.jar" basedir="${tools.build.classes}">
             <zipgroupfileset dir="${tools.build}/lib/">
                 <include name="**/*.jar"/>
