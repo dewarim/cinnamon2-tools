@@ -87,7 +87,7 @@ class OrphanFinder {
 
     static void main(String[] args) {
         if (args.length != 1) {
-            println "OrphanFinder\nusage: java -Xms 1G -Xmx 1G  -Dlogback.configurationFile=logback.xml -jar orphanFinder.jar config.properties"
+            println "OrphanFinder\nusage: java -Xms1G -Xmx1G  -Dlogback.configurationFile=logback.xml -jar orphanFinder.jar config.properties"
             System.exit(1)
         }
         def morpheus = new OrphanFinder(args[0])
