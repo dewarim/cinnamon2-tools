@@ -26,7 +26,6 @@
     <property name="tools.jar" value="${tools.target}/cinnamonTools.jar"/>
     <property name="converter.jar" value="${tools.target}/contentRelationConverter.jar"/>
 
-
     <property name="compile.debug" value="true"/>
     <path id="compile.classpath">
         <!-- <pathelement location="${lib.commons.cli}"/> -->
@@ -50,8 +49,6 @@
         <pathelement location="${lib.lucene.xmlquery}"/>
         <pathelement location="${lib.lucene.regex}"/>
         <pathelement location="${lib.commons.io}"/>
-        <pathelement location="${lib.xhtmlrenderer}"/>
-        <pathelement location="${lib.xhtmlrenderer.itext}"/>
         <pathelement location="${lib.javamail}"/>
         <pathelement location="${lib.velocity}"/>
         <pathelement location="${lib.tika}"/>
